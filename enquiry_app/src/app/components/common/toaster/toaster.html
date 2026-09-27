@@ -1,0 +1,18 @@
+@if (toaster.currentToast(); as toast) {
+	<aside
+		class="app-toast"
+		[attr.data-type]="toast.type"
+		[attr.aria-label]="toast.type + ' notification'"
+		role="status"
+		aria-live="polite"
+	>
+		<span class="app-toast__icon" aria-hidden="true"></span>
+		<div class="app-toast__content">
+			@if (toast.title) {
+				<p class="app-toast__title">{{ toast.title }}</p>
+			}
+			<p class="app-toast__message">{{ toast.message }}</p>
+		</div>
+		<button class="app-toast__dismiss" type="button" aria-label="Dismiss notification" (click)="toaster.dismiss()">&times;</button>
+	</aside>
+}
