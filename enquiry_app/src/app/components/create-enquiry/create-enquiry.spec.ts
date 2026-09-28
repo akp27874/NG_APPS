@@ -1,18 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
-import { Navbar } from './navbar';
+import { CreateEnquiry } from './create-enquiry';
 
-describe('Navbar', () => {
-  let component: Navbar;
-  let fixture: ComponentFixture<Navbar>;
+describe('CreateEnquiry', () => {
+  let component: CreateEnquiry;
+  let fixture: ComponentFixture<CreateEnquiry>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Navbar],
-      providers: [provideRouter([])],
+      imports: [CreateEnquiry],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Navbar);
+    fixture = TestBed.createComponent(CreateEnquiry);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

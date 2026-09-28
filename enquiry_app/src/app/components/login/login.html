@@ -1,65 +1,83 @@
 <main class="admin-login container-fluid min-vh-100 p-0">
-	<div class="row g-0 min-vh-100">
-		<section class="admin-login__aside col-lg-5 d-flex flex-column justify-content-between p-4 p-md-5" aria-label="Admin portal">
-			<a class="admin-login__brand d-inline-flex align-items-center gap-3 text-decoration-none" href="#" aria-label="Enquiry Desk admin home">
-				<span class="admin-login__brand-icon d-inline-flex align-items-center justify-content-center" aria-hidden="true">E</span>
-				<span>Enquiry Desk <span class="admin-login__brand-divider">/</span> Admin</span>
-			</a>
+  <div class="row g-0 min-vh-100">
+    <section
+      class="admin-login__aside col-lg-5 d-flex flex-column justify-content-between p-4 p-md-5"
+      aria-label="Admin portal"
+    >
+      <a
+        class="admin-login__brand d-inline-flex align-items-center gap-3 text-decoration-none"
+        href="#"
+        aria-label="Enquiry Desk admin home"
+      >
+        <span
+          class="admin-login__brand-icon d-inline-flex align-items-center justify-content-center"
+          aria-hidden="true"
+          >E</span
+        >
+        <span>Enquiry Desk <span class="admin-login__brand-divider">/</span> Admin</span>
+      </a>
 
-			<div class="admin-login__intro">
-				<p class="admin-login__eyebrow mb-3">ADMINISTRATION</p>
-				<h1 class="mb-3">Welcome back.</h1>
-				<p class="admin-login__description mb-0">Sign in to manage enquiries and keep your team moving.</p>
-			</div>
+      <div class="admin-login__intro">
+        <p class="admin-login__eyebrow mb-3">ADMINISTRATION</p>
+        <h1 class="mb-3">Welcome back.</h1>
+        <p class="admin-login__description mb-0">
+          Sign in to manage enquiries and keep your team moving.
+        </p>
+      </div>
 
-			<p class="admin-login__footer mb-0">Authorized administrators only</p>
-		</section>
+      <p class="admin-login__footer mb-0">Authorized administrators only</p>
+    </section>
 
-		<section class="admin-login__main col-lg-7 d-flex align-items-center justify-content-center p-4 p-md-5" aria-labelledby="admin-login-title">
-			<div class="admin-login__form-wrap w-100">
-				<div class="mb-4">
-					<p class="admin-login__eyebrow mb-2">ADMIN PORTAL</p>
-					<h2 id="admin-login-title" class="admin-login__title mb-2">Sign in to your account</h2>
-					<p class="admin-login__hint mb-0">Use your administrator credentials to continue.</p>
-				</div>
+    <section
+      class="admin-login__main col-lg-7 d-flex align-items-center justify-content-center p-4 p-md-5"
+      aria-labelledby="admin-login-title"
+    >
+      <div class="admin-login__form-wrap w-100">
+        <div class="mb-4">
+          <p class="admin-login__eyebrow mb-2">ADMIN PORTAL</p>
+          <h2 id="admin-login-title" class="admin-login__title mb-2">Sign in to your account</h2>
+          <p class="admin-login__hint mb-0">Use your administrator credentials to continue.</p>
+        </div>
 
-				<form class="d-grid gap-4">
-					<div>
-						<label for="admin-email" class="form-label">Email address</label>
-						<input
-							id="admin-email"
-							class="form-control form-control-lg"
-							type="email"
-							name="email"
-                            [(ngModel)]="userLogin.email"
-							placeholder="admin@example.com"
-							autocomplete="username"
-							required
-						/>
-					</div>
+        <form class="d-grid gap-4">
+          <div>
+            <label for="admin-email" class="form-label">Email address</label>
+            <input
+              id="admin-email"
+              class="form-control form-control-lg"
+              type="email"
+              name="email"
+              [(ngModel)]="userLogin.email"
+              placeholder="admin@example.com"
+              autocomplete="username"
+              required
+            />
+          </div>
 
-					<div>
-						<label for="admin-password" class="form-label">Password</label>
-						<input
-							id="admin-password"
-							class="form-control form-control-lg"
-							type="password"
-							name="password"
-                            [(ngModel)]="userLogin.password"
-							placeholder="Enter your password"
-							autocomplete="current-password"
-							required
-						/>
-					</div>
+          <div>
+            <label for="admin-password" class="form-label">Password</label>
+            <input
+              id="admin-password"
+              class="form-control form-control-lg"
+              type="password"
+              name="password"
+              [(ngModel)]="userLogin.password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
 
-					<button class="btn admin-login__submit btn-lg w-100" type="button" (click)="onLogin()">Sign in</button>
-				</form>
+          <button class="btn admin-login__submit btn-lg w-100" type="button" (click)="onLogin()">
+            Sign in
+          </button>
+        </form>
 
-				<div class="admin-login__security d-flex align-items-center gap-2 mt-4">
-					<span class="admin-login__security-mark" aria-hidden="true">&#9679;</span>
-					<span>Secure administrator access</span>
-				</div>
-			</div>
-		</section>
-	</div>
+        <div class="admin-login__security d-flex align-items-center gap-2 mt-4">
+          <span class="admin-login__security-mark" aria-hidden="true">&#9679;</span>
+          <span>Secure administrator access</span>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>

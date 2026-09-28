@@ -1,110 +1,193 @@
 .app-navbar {
-	--nav-ink: #292c3a;
-	--nav-muted: #707586;
-	width: 100%;
-	border-bottom: 1px solid #e8e9ef;
-	background: #fff;
-	color: var(--nav-ink);
-	font-family: "Aptos", "Segoe UI", sans-serif;
+	position: relative;
+	z-index: 1000;
+	min-height: 72px;
+	background: var(--primary-color, #adb9e3);
+	box-shadow: 0 2px 12px rgb(39 52 81 / 9%);
 }
 
-.app-navbar__inner {
+.app-navbar__container {
 	min-height: 72px;
-	padding: 0 clamp(16px, 4vw, 56px);
+	padding-inline: clamp(16px, 5vw, 64px);
 }
 
 .app-navbar__brand {
-	color: var(--nav-ink);
-	font-size: 16px;
-	font-weight: 700;
-	white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	color: #273451;
+	font-size: 18px;
+	font-weight: 750;
 }
 
 .app-navbar__brand:hover {
-	color: var(--nav-ink);
+	color: #273451;
 }
 
-.app-navbar__mark {
-	width: 36px;
-	height: 36px;
+.app-navbar__brand-mark {
+	display: grid;
+	width: 34px;
+	height: 34px;
+	place-items: center;
+	border: 1px solid rgb(39 52 81 / 24%);
 	border-radius: 9px;
-	background: var(--primary-color, #adb9e3);
-	color: #292c3a;
-	font-size: 17px;
-	font-weight: 700;
+	background: rgb(255 255 255 / 42%);
+	font-size: 16px;
+	transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.app-navbar__right {
-	min-width: 0;
+.app-navbar__brand:hover .app-navbar__brand-mark {
+	transform: rotate(-8deg) scale(1.06);
+	background: #fff;
+}
+
+.app-navbar__collapse {
+	align-items: center;
+	justify-content: flex-end;
+	gap: 28px;
+}
+
+.app-navbar__links {
+	align-items: center;
+	gap: 8px;
 }
 
 .app-navbar__link {
 	position: relative;
 	padding: 10px 12px !important;
-	border-radius: 5px;
-	color: var(--nav-muted);
-	font-size: 13px;
+	color: #35415c;
+	font-size: 14px;
 	font-weight: 600;
-	white-space: nowrap;
-	transition: color 150ms ease, background-color 150ms ease;
+	transition: color 160ms ease, transform 160ms ease;
+}
+
+.app-navbar__link::after {
+	position: absolute;
+	right: 12px;
+	bottom: 5px;
+	left: 12px;
+	height: 2px;
+	background: #35415c;
+	content: "";
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 180ms ease;
 }
 
 .app-navbar__link:hover,
 .app-navbar__link:focus-visible {
-	background: rgb(173 185 227 / 24%);
-	color: var(--nav-ink);
+	color: #1e2a45;
+	transform: translateY(-2px);
 }
 
-.app-navbar__link:focus-visible,
-.app-navbar__brand:focus-visible {
-	outline: 2px solid #818fca;
-	outline-offset: 2px;
+.app-navbar__link:hover::after,
+.app-navbar__link:focus-visible::after,
+.app-navbar__link.active::after {
+	transform: scaleX(1);
 }
 
-.app-navbar__admin {
-	padding-left: 16px;
-	border-left: 1px solid #e8e9ef;
-	color: var(--nav-ink);
-	font-size: 13px;
-	font-weight: 600;
-	white-space: nowrap;
+.app-navbar__link.active {
+	color: #1e2a45;
 }
 
-.app-navbar__avatar {
-	width: 32px;
-	height: 32px;
-	border: 1px solid rgb(183 68 184 / 25%);
-	border-radius: 50%;
-	background: #f7edf7;
-	color: #923394;
-	font-size: 12px;
-	font-weight: 700;
+.app-navbar__login {
+	border: 1px solid #35415c;
+	border-radius: 6px;
+	padding: 8px 16px;
+	color: #273451;
+	font-size: 14px;
+	font-weight: 650;
+	transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
 }
 
-@media (max-width: 575.98px) {
-	.app-navbar__inner {
-		min-height: 64px;
+.app-navbar__login:hover,
+.app-navbar__login:focus-visible,
+.app-navbar__login.active {
+	transform: translateY(-1px);
+	background: #35415c;
+	color: #fff;
+}
+
+.app-navbar__toggler {
+	display: grid;
+	width: 42px;
+	height: 42px;
+	align-content: center;
+	gap: 5px;
+	border-color: rgb(39 52 81 / 35%);
+}
+
+.app-navbar__toggler span {
+	display: block;
+	width: 20px;
+	height: 2px;
+	border-radius: 2px;
+	background: #273451;
+	transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.app-navbar__toggler.is-open span:first-child {
+	transform: translateY(7px) rotate(45deg);
+}
+
+.app-navbar__toggler.is-open span:nth-child(2) {
+	opacity: 0;
+}
+
+.app-navbar__toggler.is-open span:last-child {
+	transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 991.98px) {
+	.app-navbar__container {
 		flex-wrap: wrap;
-		gap: 8px;
-		padding-top: 10px;
-		padding-bottom: 10px;
 	}
 
-	.app-navbar__right {
-		width: 100%;
-		justify-content: space-between;
+	.app-navbar__collapse {
+		max-height: 0;
+		flex-basis: 100%;
+		align-items: stretch;
+		gap: 12px;
+		overflow: hidden;
+		opacity: 0;
+		transform: translateY(-8px);
+		transition: max-height 260ms ease, opacity 180ms ease, transform 180ms ease, padding 180ms ease;
+	}
+
+	.app-navbar__collapse.show {
+		max-height: 280px;
+		padding-block: 12px 18px;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.app-navbar__links {
+		align-items: stretch;
 	}
 
 	.app-navbar__link {
-		padding: 8px 9px !important;
-		font-size: 12px;
+		padding: 10px 4px !important;
 	}
 
-	.app-navbar__admin {
-		padding-left: 10px;
+	.app-navbar__link::after {
+		right: auto;
+		bottom: 4px;
+		left: 4px;
+		width: 38px;
 	}
 
-	.app-navbar__admin-label {
-		display: none;
+	.app-navbar__login {
+		align-self: flex-start;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.app-navbar__brand-mark,
+	.app-navbar__link,
+	.app-navbar__link::after,
+	.app-navbar__login,
+	.app-navbar__toggler span,
+	.app-navbar__collapse {
+		transition: none;
 	}
 }
