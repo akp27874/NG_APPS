@@ -30,7 +30,7 @@ export class Login implements OnInit {
       localStorage.setItem("enquiryApp", this.userLogin.email)
       this.commonSvc.$userLog.next();
       this.router.navigateByUrl('/status')
-      this.toaster.show("Signed-in Successfully", 'success', 'Sign-in');
+      // this.toaster.show("Signed-in Successfully", 'success', 'Sign-in');
     }else{
       this.toaster.show('The email address or password is incorrect.', 'error', 'Sign-in failed');
     }

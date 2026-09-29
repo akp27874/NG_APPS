@@ -1,9 +1,4 @@
 import { Routes } from '@angular/router';
-import { CategoryHome } from './components/category-home/category-home';
-import { EnquiryHome } from './components/enquiry-home/enquiry-home';
-import { StatusHome } from './components/status-home/status-home';
-import { Login } from './components/login/login';
-import { CreateEnquiry } from './components/create-enquiry/create-enquiry';
 
 export const routes: Routes = [
     {
@@ -13,22 +8,22 @@ export const routes: Routes = [
     },
     {
         path: 'login',
-        component: Login
+        loadComponent: () => import('./components/login/login').then((m) => m.Login)
     },
     {
         path: 'category',
-        component: CategoryHome
+        loadComponent: () => import('./components/category-home/category-home').then((m) => m.CategoryHome)
     },
     {
-        path: 'creaate-enquiry',
-        component: CreateEnquiry
+        path: 'create-enquiry',
+        loadComponent: () => import('./components/create-enquiry/create-enquiry').then((m) => m.CreateEnquiry)
     },
     {
         path: 'enquiry',
-        component: EnquiryHome
+        loadComponent: () => import('./components/enquiry-home/enquiry-home').then((m) => m.EnquiryHome)
     },
     {
         path: 'status',
-        component: StatusHome
+        loadComponent: () => import('./components/status-home/status-home').then((m) => m.StatusHome)
     }
 ];

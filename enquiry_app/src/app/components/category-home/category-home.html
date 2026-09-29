@@ -1,1 +1,92 @@
-<p>category-home works!</p>
+<main class="category-page container-fluid py-4 px-3 px-lg-4">
+	<header class="category-page__header mb-4">
+		<div>
+			<p class="category-page__eyebrow mb-1">ENQUIRY MANAGEMENT</p>
+			<h1 class="h3 mb-1">Categories</h1>
+			<p class="text-secondary mb-0">Manage the categories used to organize enquiries.</p>
+		</div>
+	</header>
+
+	<div class="row g-4 align-items-start">
+		<section class="col-12 col-lg-7" aria-labelledby="category-list-heading">
+			<div class="card category-card h-100">
+				<div class="card-header category-card__header d-flex justify-content-between align-items-center gap-3">
+					<div>
+						<h2 id="category-list-heading" class="h5 mb-1">Category list</h2>
+						<p class="small text-secondary mb-0">4 categories</p>
+					</div>
+					<span class="category-list-mark" aria-hidden="true">04</span>
+				</div>
+				<div class="card-body p-0">
+					<div class="table-responsive">
+						<table class="table table-hover align-middle mb-0 category-table">
+							<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Category name</th>
+									<th scope="col">Status</th>
+									<th scope="col" class="text-end">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+                                @for (item of categoryList(); track $index) {
+
+                                    <tr>
+                                        <td class="category-table__id">{{$index + 1}}</td>
+                                        <td class="category-table__name">{{item.categoryName}}</td>
+                                        <td><span [ngClass]="item.isActive ? 'category-status--active': ''" class="category-status"><span></span>{{item.isActive ? 'Active': 'De-Active'}}</span></td>
+                                        <td>
+                                            <div class="category-actions">
+                                                <button class="category-action category-action--edit" type="button" (click)="onEdit(item)" aria-label="Edit General Enquiry" title="Edit">
+                                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6.5 3 3M4 20l4.2-.9L19 8.3a2.1 2.1 0 0 0-3-3L5.2 16.1 4 20Z" /></svg>
+                                                </button>
+                                                <button class="category-action category-action--delete" type="button" aria-label="Delete General Enquiry" title="Delete" (click)="onDelete(item.categoryId)">
+                                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M6 7l1 13h10l1-13M9 7V4h6v3" /></svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="col-12 col-lg-5" aria-labelledby="category-form-heading">
+			<div class="card category-card">
+				<div class="card-header category-card__header">
+					<p class="category-form__eyebrow mb-1">CATEGORY DETAILS</p>
+					<h2 id="category-form-heading" class="h5 mb-0">Add category</h2>
+				</div>
+				<div class="card-body p-4">
+					<form>
+						<div class="mb-4">
+							<label for="categoryName" class="form-label">Category name</label>
+							<input id="categoryName" name="categoryName" [(ngModel)]="newCategory.categoryName" class="form-control" type="text" placeholder="e.g. Product Support">
+						</div>
+						<div class="category-active-field mb-4">
+							<div>
+								<label for="isActive" class="form-label mb-1">Active category</label>
+								<p class="small text-secondary mb-0">Allow this category to be selected for enquiries.</p>
+							</div>
+							<div class="form-check form-switch m-0">
+								<input id="isActive" name="isActive" [(ngModel)]="newCategory.isActive" class="form-check-input" type="checkbox" role="switch">
+							</div>
+						</div>
+						<div class="d-flex flex-wrap gap-2">
+                            @if (newCategory.categoryId == 0) {
+                                <button class="btn category-submit" type="button" (click)="addCategory()">Save category</button>
+                            } @else {
+                                <button class="btn category-submit" type="button" (click)="updateCategory()">Update category</button>
+                            }
+							<button class="btn btn-outline-secondary" type="reset" (click)="onClear()">Clear</button>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</section>
+	</div>
+</main>
