@@ -1,0 +1,236 @@
+.status-page {
+	--status-ink: #25323d;
+	--status-muted: #74818a;
+	--status-line: #e4e8e8;
+	--status-accent: #5a6793;
+	--status-accent-strong: #46547f;
+	max-width: 1600px;
+	color: var(--status-ink);
+}
+
+.status-page__header h1 {
+	font-weight: 700;
+}
+
+.status-page__eyebrow,
+.status-form__eyebrow {
+	color: var(--status-accent-strong);
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+}
+
+.status-card {
+	border: 1px solid var(--status-line);
+	border-radius: 6px;
+	box-shadow: 0 5px 18px rgb(37 50 61 / 4%);
+}
+
+.status-card__header {
+	min-height: 76px;
+	padding: 1rem 1.25rem;
+	border-bottom: 1px solid var(--status-line);
+	background: #fff;
+}
+
+.status-card__header h2 {
+	font-weight: 650;
+}
+
+.status-list-mark {
+	display: grid;
+	width: 38px;
+	height: 38px;
+	place-items: center;
+	border-radius: 5px;
+	background: color-mix(in srgb, var(--primary-color) 42%, white);
+	color: var(--status-accent-strong);
+	font-size: 0.75rem;
+	font-weight: 700;
+}
+
+.status-table {
+	min-width: 550px;
+}
+
+.status-table thead th {
+	padding: 0.85rem 1rem;
+	border-bottom: 1px solid var(--status-line);
+	background: #f8f9fc;
+	color: #68757b;
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.status-table tbody td {
+	padding: 0.95rem 1rem;
+	border-color: #edf0f0;
+	font-size: 0.88rem;
+}
+
+.status-table tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+.status-table__id {
+	color: var(--status-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.status-table__name {
+	font-weight: 600;
+}
+
+.status-availability {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-size: 0.8rem;
+}
+
+.status-availability > span {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+}
+
+.status-availability--active {
+	color: #4b5b8e;
+}
+
+.status-availability--active > span {
+	background: #7182bd;
+}
+
+.status-availability--inactive {
+	color: #85898a;
+}
+
+.status-availability--inactive > span {
+	background: #a8adae;
+}
+
+.status-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.35rem;
+}
+
+.status-action {
+	display: grid;
+	width: 34px;
+	height: 34px;
+	place-items: center;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	background: transparent;
+	cursor: pointer;
+}
+
+.status-action svg {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.7;
+}
+
+.status-action--edit {
+	color: var(--status-accent-strong);
+}
+
+.status-action--edit:hover,
+.status-action--edit:focus-visible {
+	border-color: color-mix(in srgb, var(--primary-color) 70%, white);
+	background: color-mix(in srgb, var(--primary-color) 26%, white);
+}
+
+.status-action--delete {
+	color: #a84c4c;
+}
+
+.status-action--delete:hover,
+.status-action--delete:focus-visible {
+	border-color: #f0d8d7;
+	background: #fbefee;
+}
+
+.status-card .form-label {
+	color: #38464f;
+	font-size: 0.84rem;
+	font-weight: 600;
+}
+
+.status-card .form-control {
+	min-height: 42px;
+	border-color: #dce2e2;
+	border-radius: 5px;
+	font-size: 0.9rem;
+}
+
+.status-card .form-control:focus {
+	border-color: var(--status-accent);
+	box-shadow: 0 0 0 0.2rem rgb(90 103 147 / 14%);
+}
+
+.status-card .form-control[readonly] {
+	background: #f5f6fa;
+	color: #68757b;
+}
+
+.status-active-field {
+	display: flex;
+	min-height: 56px;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.75rem 0.9rem;
+	border: 1px solid var(--status-line);
+	border-radius: 5px;
+}
+
+.status-active-field .form-check-input {
+	width: 2.25rem;
+	height: 1.2rem;
+	margin: 0;
+	cursor: pointer;
+}
+
+.status-active-field .form-check-input:checked {
+	border-color: var(--status-accent);
+	background-color: var(--status-accent);
+}
+
+.status-submit {
+	border-color: var(--status-accent);
+	background: var(--status-accent);
+	color: #fff;
+}
+
+.status-submit:hover,
+.status-submit:focus-visible {
+	border-color: var(--status-accent-strong);
+	background: var(--status-accent-strong);
+	color: #fff;
+}
+
+@media (max-width: 575.98px) {
+	.status-page {
+		padding-top: 1.25rem !important;
+	}
+
+	.status-page__header {
+		margin-bottom: 1.25rem !important;
+	}
+
+	.status-card__header {
+		padding: 0.9rem 1rem;
+	}
+
+	.status-card .card-body:not(.p-0) {
+		padding: 1.1rem !important;
+	}
+}
