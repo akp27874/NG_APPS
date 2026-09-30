@@ -1,1 +1,100 @@
-<p>create-enquiry works!</p>
+<main class="enquiry-page container-fluid">
+	<div class="enquiry-shell">
+		<header class="enquiry-header">
+			<p class="enquiry-eyebrow">ENQUIRY MANAGEMENT</p>
+			<h1>Create enquiry</h1>
+			<p class="enquiry-intro">Record a new customer enquiry and its follow-up details.</p>
+		</header>
+
+		<form class="enquiry-form">
+			<section class="form-section" aria-labelledby="customer-section-title">
+				<div class="section-heading">
+					<span class="section-number" aria-hidden="true">01</span>
+					<h2 id="customer-section-title">Customer details</h2>
+				</div>
+
+				<div class="row g-3">
+					<div class="col-12 col-md-6">
+						<label class="form-label" for="customerName">Customer name <span class="required-mark" aria-hidden="true">*</span></label>
+						<input class="form-control" id="customerName" [formField]="enqForm.customerName"  type="text" placeholder="e.g. Jordan Lee" autocomplete="name" >
+					</div>
+					<div class="col-12 col-md-6">
+						<label class="form-label" for="customerEmail">Email address <span class="required-mark" aria-hidden="true">*</span></label>
+						<input class="form-control" id="customerEmail" [formField]="enqForm.customerEmail"  type="email" placeholder="name@example.com" autocomplete="email" >
+					</div>
+					<div class="col-12 col-md-6">
+						<label class="form-label" for="customerPhone">Phone number</label>
+						<input class="form-control" id="customerPhone" [formField]="enqForm.customerPhone"  type="tel" placeholder="Add a contact number" autocomplete="tel">
+					</div>
+					<!-- <div class="col-12 col-md-6">
+						<label class="form-label" for="enquiryType">Enquiry type <span class="required-mark" aria-hidden="true">*</span></label>
+						<input class="form-control" id="enquiryType" [formField]="enqForm.enquiryType"  type="text" placeholder="e.g. Product information" >
+					</div> -->
+				</div>
+			</section>
+
+			<section class="form-section" aria-labelledby="enquiry-section-title">
+				<div class="section-heading">
+					<span class="section-number" aria-hidden="true">02</span>
+					<h2 id="enquiry-section-title">Enquiry details</h2>
+				</div>
+
+				<div class="row g-3">
+					<div class="col-12 col-md-6">
+						<label class="form-label" for="categoryId">Category <span class="required-mark" aria-hidden="true">*</span></label>
+						<select class="form-select" id="categoryId" [formField]="enqForm.categoryId">
+							<option value="0" >Select a category</option>
+                            @for (item of categoryList(); track $index) {
+                                <option [value]="item.categoryId">{{item.categoryName}}</option>
+                            }
+                            
+						</select>
+					</div>
+					<!-- <div class="col-12 col-md-6">
+						<label class="form-label" for="statusId">Status <span class="required-mark" aria-hidden="true">*</span></label>
+						<select class="form-select" id="statusId"  [formField]="enqForm.statusId">
+							<option value="" selected disabled>Select a status</option>
+						</select>
+					</div> -->
+					<div class="col-12">
+						<label class="form-label" for="message">Message <span class="required-mark" aria-hidden="true">*</span></label>
+						<textarea class="form-control" id="message" [formField]="enqForm.message"  rows="4" placeholder="Describe the customer's enquiry..." ></textarea>
+					</div>
+				</div>
+			</section>
+
+			<!-- <section class="form-section form-section--last" aria-labelledby="follow-up-section-title">
+				<div class="section-heading">
+					<span class="section-number" aria-hidden="true">03</span>
+					<h2 id="follow-up-section-title">Follow-up</h2>
+				</div>
+
+				<div class="row g-3 align-items-end">
+					<div class="col-12 col-md-6">
+						<label class="form-label" for="enquiryDate">Enquiry date</label>
+						<input class="form-control" id="enquiryDate" [formField]="enqForm.enquiryDate"  type="datetime-local">
+					</div>
+					<div class="col-12 col-md-6">
+						<label class="form-label" for="followUpDate">Follow-up date</label>
+						<input class="form-control" id="followUpDate" [formField]="enqForm.followUpDate"  type="datetime-local">
+					</div>
+					<div class="col-12">
+						<label class="form-label" for="feedback">Feedback</label>
+						<textarea class="form-control" id="feedback" [formField]="enqForm.feedback"  rows="3" placeholder="Add any feedback or follow-up notes..."></textarea>
+					</div>
+					<div class="col-12">
+						<div class="conversion-control form-check form-switch">
+							<input class="form-check-input" id="isConverted" [formField]="enqForm.isConverted" type="checkbox" role="switch">
+							<label class="form-check-label" for="isConverted">Converted to customer</label>
+						</div>
+					</div>
+				</div>
+			</section> -->
+
+			<footer class="form-actions">
+				<button class="btn btn-light cancel-button" type="reset">Clear form</button>
+				<button class="btn btn-primary submit-button" type="button" (click)="onCreateEnquiry()">Create enquiry <span aria-hidden="true">&#8594;</span></button>
+			</footer>
+		</form>
+	</div>
+</main>

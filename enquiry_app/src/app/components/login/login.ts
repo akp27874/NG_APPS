@@ -23,6 +23,7 @@ export class Login implements OnInit {
   }
 
   ngOnInit(): void {
+    localStorage.clear();
     this.commonSvc.$userLog.next();
   }
   onLogin(){
