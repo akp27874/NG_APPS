@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Common } from '../../services/common';
 
@@ -8,7 +8,7 @@ import { Common } from '../../services/common';
   styleUrl: './navbar.css',
   templateUrl: './navbar.html',
 })
-export class Navbar {
+export class Navbar implements OnInit {
   commonSvc = inject(Common);
   menuOpen = false;
 
@@ -27,6 +27,10 @@ export class Navbar {
         this.verifyAdminLogin();
       }
     })
+  }
+
+  ngOnInit(): void {
+    this.verifyAdminLogin();
   }
 
   verifyAdminLogin(){

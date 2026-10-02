@@ -1,1 +1,58 @@
-<p>enquiry-home works!</p>
+<main class="enquiry-list-page container-fluid py-3 px-3 px-lg-4">
+	<header class="enquiry-list-header mb-3">
+		<div>
+			<p class="enquiry-list-eyebrow mb-1">ENQUIRY MANAGEMENT</p>
+			<h1 class="h3 mb-1">All enquiries</h1>
+			<p class="text-secondary mb-0">Browse customer enquiries and their details.</p>
+		</div>
+		<span class="enquiry-count" aria-label="Total enquiries">{{ enquiryList().length }}</span>
+	</header>
+
+	<section class="row g-3" aria-label="Enquiry list">
+		@for (item of enquiryList(); track item.enquiryId ?? $index) {
+			<div class="col-12 col-sm-6 col-xl-3">
+				<article class="card enquiry-card h-100">
+					<div class="card-body">
+						<div class="enquiry-card__top">
+							<div class="min-w-0">
+								<h2 class="enquiry-card__name mb-1">{{ item.customerName || 'Unnamed customer' }}</h2>
+								<p class="enquiry-card__id mb-0">Enquiry #{{ item.enquiryId || '—' }}</p>
+							</div>
+							@if (item.statusName || item.status) {
+								<span class="enquiry-status">{{ item.statusName || item.status }}</span>
+							}
+						</div>
+
+						<div class="enquiry-card__contact">
+							@if (item.customerEmail) {
+								<a class="enquiry-card__detail" [href]="'mailto:' + item.customerEmail">{{ item.customerEmail }}</a>
+							}
+							@if (item.customerPhone) {
+								<a class="enquiry-card__detail" [href]="'tel:' + item.customerPhone">{{ item.customerPhone }}</a>
+							}
+						</div>
+
+						@if (item.message) {
+							<p class="enquiry-card__message mb-2">{{ item.message }}</p>
+						}
+
+						<div class="enquiry-card__footer">
+							@if (item.categoryName) {
+								<span class="enquiry-category">{{ item.categoryName }}</span>
+							}
+							@if (item.enquiryDate) {
+								<time class="enquiry-date">{{ item.enquiryDate | date: 'mediumDate' }}</time>
+							}
+						</div>
+					</div>
+				</article>
+			</div>
+		} @empty {
+			<div class="col-12">
+				<div class="enquiry-empty card">
+					<p class="mb-0">No enquiries to show yet.</p>
+				</div>
+			</div>
+		}
+	</section>
+</main>
